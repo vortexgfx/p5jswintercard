@@ -3,27 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Christmas Card</title>
+    <title>Embedded p5.js Sketch</title>
     <style>
-      /* Container keeps 1:1 aspect ratio */
+      body {
+        text-align: center; /* center all text */
+        font-family: Arial, sans-serif;
+      }
+
       .sketch-container {
         position: relative;
         width: 100%;
-        max-width: 500px;   /* optional max size */
+        max-width: 500px;
         aspect-ratio: 1 / 1;
-        margin: auto;       /* center on page */
+        margin: 20px auto; /* add spacing above/below */
       }
 
       .sketch-container iframe {
-        position: absolute;
         width: 100%;
         height: 100%;
         border: none;
       }
+
+      .share-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
-    <h1>A Christmas Card! Please share this with your friends!</h1>
+
+    <h1>My p5.js Sketch</h1> <!-- centered heading -->
 
     <div class="sketch-container">
       <iframe
@@ -31,6 +43,27 @@
         allowfullscreen
       ></iframe>
     </div>
+
+    <button class="share-button" onclick="shareSketch()">Share</button>
+
+    <script>
+      function shareSketch() {
+        const url = "https://tr.ee/1COM7f"; // your Linktree link
+
+        if (navigator.share) {
+          navigator.share({
+            title: 'Check out this sketch!',
+            url: url
+          }).catch(console.error);
+        } else {
+          navigator.clipboard.writeText(url).then(() => {
+            alert('Linktree URL copied to clipboard!');
+          }).catch(() => {
+            prompt('Copy this link:', url);
+          });
+        }
+      }
+    </script>
 
   </body>
 </html>
