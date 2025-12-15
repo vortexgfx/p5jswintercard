@@ -3,18 +3,34 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded p5.js Sketch</title>
+    <title>Responsive Embedded p5.js Sketch</title>
+    <style>
+      /* Container keeps 1:1 aspect ratio */
+      .sketch-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px;   /* optional max size */
+        aspect-ratio: 1 / 1;
+        margin: auto;       /* center on page */
+      }
+
+      .sketch-container iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
   </head>
   <body>
-    <h1>My Embedded p5.js Sketch</h1>
+    <h1>My Responsive p5.js Sketch</h1>
 
-    <!-- Embed the p5.js sketch -->
-    <iframe
-      src="https://editor.p5js.org/CocoHippo936/full/u9zexzKNl"
-      width="500"
-      height="500"
-      style="border:none;"
-    ></iframe>
+    <div class="sketch-container">
+      <iframe
+        src="https://editor.p5js.org/CocoHippo936/full/u9zexzKNl"
+        allowfullscreen
+      ></iframe>
+    </div>
 
   </body>
 </html>
